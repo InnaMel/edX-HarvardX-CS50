@@ -1,0 +1,7 @@
+0. The program allows creating framework from 3*3 to 9*9
+1. two-dimensional array
+2. Function is "void greet(void)"
+3. init - I must initial array in according input "d".Dont forget about even.
+draw - I must painting the board with nums tile from largest to smallest.
+move - After that user give me the number of tile I have to check is legal and move it or not (or quit if user inputs 0)
+won - The last function, it has to say "win" or "not win" every time while user made the move or take us ctrl-c.
