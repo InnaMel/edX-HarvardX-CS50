@@ -36,7 +36,7 @@ bool check(const char *word)
         DICTENTITY *iterator = dictionaryLinkList->next;
         while(iterator != NULL)
         {
-            if(strcasecmp(iterator->word, word) == 0)
+            if(strcasecmp(iterator->word, word) == 0) //it is doing: compare two strings ignoring cases
             {
                 return true;
             }
@@ -117,7 +117,7 @@ DICTENTITY *createNewEntity()
         return result;
     }
 
-    memset(result, 0, sizeof(result)); // just one instead of two lines
+    memset(result, 0, sizeof(DICTENTITY)); // just one instead of two lines
 
     //memset(result->word, 0, sizeof(result->word));
     //result->next = NULL;
