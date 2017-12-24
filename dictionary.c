@@ -7,12 +7,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
+#include <ctype.h>
 
 
 #include "dictionary.h"
 
 struct dictEntity
 {
+    int hash;
     char word[LENGTH+1];
     struct dictEntity *next;
 };
@@ -25,6 +27,8 @@ void printDictionary();
 
 DICTENTITY *dictionaryLinkList = NULL;
 
+int myHashFunction(const char *word);
+
 /**
  * Returns true if word is in dictionary else false.
  */
@@ -33,10 +37,11 @@ bool check(const char *word)
     //printf("you are in check '%s' \n", word);
     if(dictionaryLinkList != NULL)
     {
+        int hashCurrentWord = myHashFunction(word);
         DICTENTITY *iterator = dictionaryLinkList->next;
         while(iterator != NULL)
         {
-            if(strcasecmp(iterator->word, word) == 0) //it is doing: compare two strings ignoring cases
+            if((iterator->hash == hashCurrentWord) && (strcasecmp(iterator->word, word) == 0))
             {
                 return true;
             }
@@ -59,8 +64,6 @@ bool load(const char *dictionary)
         dictionaryLinkList = createNewEntity();
         if(dictionaryLinkList)
         {
-            DICTENTITY *lastNode = dictionaryLinkList;
-
             char everyWord[LENGTH + 1];
             result = true;
             while(fscanf(dictFile, "%s", everyWord) != EOF)
@@ -72,9 +75,13 @@ bool load(const char *dictionary)
                     break;
                 }
                 sizeOfDictionary++;
+                // fill new node
+                newNextNode->hash = myHashFunction(everyWord);
                 strcpy(newNextNode->word, everyWord);
-                lastNode->next = newNextNode;
-                lastNode = newNextNode;
+
+                //swap pointers for insert in front of
+                newNextNode->next = dictionaryLinkList->next;
+                dictionaryLinkList->next = newNextNode;
             }
         }
         fclose(dictFile);
@@ -164,4 +171,20 @@ bool unload(void)
     {
         return false;
     }
+}
+
+
+int myHashFunction(const char *word) ///////////////////////////myHashFunction
+{
+    int hashKey = 0, koeff = 0;
+
+    for (int i = 0; i < strlen(word); i++)
+    {
+        hashKey = hashKey + toupper(word[i]);
+        koeff++;
+    }
+
+    hashKey = hashKey + koeff;
+
+    return hashKey;
 }
