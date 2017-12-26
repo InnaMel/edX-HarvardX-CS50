@@ -1,7 +1,24 @@
-0.  TODO
-1.  TODO
-2.  TODO
-3.  TODO
-4.  TODO
-5.  TODO
-6.  TODO
+0.  In our program is longest word whith define LENGTH 45
+1.  Return resource usage statistics for the calling process, which is the sum of resources used by all threads in the process.
+2.  15 members in struct rusage: struct rusage {
+    struct timeval ru_utime; /* user CPU time used */
+    struct timeval ru_stime; /* system CPU time used */
+    long   ru_maxrss;        /* maximum resident set size */
+    long   ru_ixrss;         /* integral shared memory size */
+    long   ru_idrss;         /* integral unshared data size */
+    long   ru_isrss;         /* integral unshared stack size */
+    long   ru_minflt;        /* page reclaims (soft page faults) */
+    long   ru_majflt;        /* page faults (hard page faults) */
+    long   ru_nswap;         /* swaps */
+    long   ru_inblock;       /* block input operations */
+    long   ru_msgsnd;        /* IPC messages sent */
+    long   ru_msgrcv;        /* IPC messages received */
+    long   ru_nsignals;      /* signals received */
+    long   ru_nvcsw;         /* voluntary context switches */
+    long   ru_nivcsw;        /* involuntary context switches */
+};
+3.  Because any changes do faster with the pointer
+4.  Reading the symbol by symbol, if this is letter or apostrophe - added to the word. Ignore words longer than the given LENGTH or words with numbers.
+After the achieved sign of the end of the word "\0", we check the word for presence in the dictionary. We calculate the search time. If the word is not found, print it.
+5.  Because in the text there are other symbols except words (punctuation marks, double spaces). We need to weed them out, so we need to use fgetc.
+6.  Because we must convey exactly same the dictionary chosen by the user and each word from the text without changes.
