@@ -1,23 +1,23 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main (void)
+int main(void)
 {
   int height = 0;
 
   //started cycle "do while"
   do
   {
-    printf ("Height: ");
+    printf("Height: ");
 
     //getting height for pyramid
-    height = get_int ();
+    height = get_int();
   }
 
   while ((height < 0) || (height > 23));
 
   //switching our actions depending on conditions
-  switch (height)
+  switch(height)
   {
 
   // if height is zero - doing nothing
@@ -40,14 +40,13 @@ int main (void)
         //if column less space - print white space
         if (j < space)
         {
-          printf (" ");
+          printf(" ");
         }
 
         //if space less column  - print #
         else
-
         {
-        printf ("#");
+        printf("#");
         }
       }
 
@@ -55,7 +54,7 @@ int main (void)
       space--;
 
       //line free, translation
-      printf ("\n");
+      printf("\n");
     }
     }
   }
