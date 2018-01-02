@@ -20,6 +20,7 @@ int main (void)
   // if height is zero - doing nothing
   case 0:
     break;
+
   default:
     {
         //printing pyramid
@@ -30,19 +31,22 @@ int main (void)
         for (int j = 0; j < (height + 1); j++)
 
         {
-          if (j < space)
+            //if row less space - print white space
+            if (j < space)
 
-          {
+            {
             printf (" ");
-          }
-          else
+            }
 
-          {
+            //if space less row  - print #
+            else
+
+            {
             printf ("#");
-          }
+            }
         }
 
-
+        //decrement space
         space--;
         //line translation
         printf ("\n");
