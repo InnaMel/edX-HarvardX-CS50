@@ -19,12 +19,12 @@ int main (void)
   switch (height)
   {
 
-    // if height is zero - doing nothing
+  // if height is zero - doing nothing
   case 0:
     break;
 
   default:
-    {
+  {
 
       //printing pyramid
       int space = height - 1;
@@ -33,25 +33,25 @@ int main (void)
         for (int j = 0; j < (height + 1); j++)
           {
 
-    //if row less space - print white space
-    if (j < space)
-    {
-      printf (" ");
-    }
+            //if row less space - print white space
+            if (j < space)
+            {
+              printf (" ");
+            }
 
-    //if space less row  - print #
-    else
-    {
-      printf ("#");
-    }
-  }
+            //if space less row  - print #
+            else
+            {
+              printf ("#");
+            }
+          }
 
-  //decrement space
-  space--;
+      //decrement space
+      space--;
 
-  //line translation
-  printf ("\n");
+      //line translation
+      printf ("\n");
       }
-    }
+  }
   }
 }
