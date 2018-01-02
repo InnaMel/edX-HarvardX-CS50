@@ -28,18 +28,22 @@ int main (void)
 
       //printing pyramid
       int space = height - 1;
+
+      //step by row
       for (int i = 0; i < height; i++)
       {
+
+        //step by column
         for (int j = 0; j < (height + 1); j++)
         {
 
-            //if row less space - print white space
+            //if column less space - print white space
             if (j < space)
             {
               printf (" ");
             }
 
-            //if space less row  - print #
+            //if space less column  - print #
             else
             {
               printf ("#");
