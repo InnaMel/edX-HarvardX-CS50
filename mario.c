@@ -2,48 +2,57 @@
 #include <stdio.h>
 
 int main (void)
-
 {
   int height = 0;
+
   //started cycle "do while"
   do
-
   {
     printf ("Height: ");
+
     //getting height for pyramid
     height = get_int ();
   }
   while ((height < 0) || (height > 23));
-  switch (height)
 
+  //switching our actions depending on conditions
+  switch (height)
   {
+
   // if height is zero - doing nothing
   case 0:
     break;
-  default:
+
+    default:
     {
-        //printing pyramid
-        int space = height - 1;
-        for (int i = 0; i < height; i++)
 
-        {
+      //printing pyramid
+      int space = height - 1;
+
+      //step by row
+      for (int i = 0; i < height; i++)
+      {
+
+        //step by column
         for (int j = 0; j < (height + 1); j++)
-
         {
-          if (j < space)
 
-          {
-            printf (" ");
+            //if column less space - print white space
+            if (j < space)
+            {
+              printf (" ");
+            }
+
+            //if space less column  - print #
+            else
+            {
+              printf ("#");
+            }
           }
-          else
 
-          {
-            printf ("#");
-          }
-        }
-
-
+        //decrement space
         space--;
+
         //line translation
         printf ("\n");
       }
