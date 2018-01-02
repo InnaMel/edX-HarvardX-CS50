@@ -23,8 +23,8 @@ int main (void)
   case 0:
     break;
 
-  default:
-  {
+    default:
+    {
 
       //printing pyramid
       int space = height - 1;
@@ -46,12 +46,12 @@ int main (void)
             }
           }
 
-      //decrement space
-      space--;
+        //decrement space
+        space--;
 
-      //line translation
-      printf ("\n");
+        //line translation
+        printf ("\n");
       }
-  }
+    }
   }
 }
