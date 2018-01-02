@@ -22,40 +22,39 @@ int main (void)
   // if height is zero - doing nothing
   case 0:
     break;
-
-    default:
+  default:
     {
 
-      //printing pyramid
-      int space = height - 1;
+    //printing pyramid
+    int space = height - 1;
 
-      //step by row
-      for (int i = 0; i < height; i++)
+    //step by row
+    for (int i = 0; i < height; i++)
+    {
+
+      //step by column
+      for (int j = 0; j < (height + 1); j++)
       {
 
-        //step by column
-        for (int j = 0; j < (height + 1); j++)
+        //if column less space - print white space
+        if (j < space)
         {
+          printf (" ");
+        }
 
-            //if column less space - print white space
-            if (j < space)
-            {
-              printf (" ");
-            }
-
-            //if space less column  - print #
-            else
-            {
-              printf ("#");
-            }
-          }
-
-        //decrement space
-        space--;
-
-        //line translation
-        printf ("\n");
+        //if space less column  - print #
+        else
+        {
+          printf ("#");
+        }
       }
+
+      //decrement space
+      space--;
+
+      //line free, translation
+      printf ("\n");
+    }
     }
   }
 }
