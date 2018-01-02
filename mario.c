@@ -5,24 +5,28 @@ int main (void)
 
 {
   int height = 0;
+  //started cycle "do while"
   do
 
   {
     printf ("Height: ");
+    //getting height for pyramid
     height = get_int ();
   }
   while ((height < 0) || (height > 23));
   switch (height)
 
   {
+  // if height is zero - doing nothing
   case 0:
     break;
   default:
     {
-      int space = height - 1;
-      for (int i = 0; i < height; i++)
+        //printing pyramid
+        int space = height - 1;
+        for (int i = 0; i < height; i++)
 
-      {
+        {
         for (int j = 0; j < (height + 1); j++)
 
         {
@@ -40,6 +44,7 @@ int main (void)
 
 
         space--;
+        //line translation
         printf ("\n");
       }
     }
