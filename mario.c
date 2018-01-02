@@ -10,40 +10,40 @@ int main (void)
 
   {
     printf ("Height: ");
-    //getting height for pyramid
+//getting height for pyramid
     height = get_int ();
   }
   while ((height < 0) || (height > 23));
   switch (height)
 
   {
-  // if height is zero - doing nothing
+// if height is zero - doing nothing
   case 0:
     break;
 
   default:
     {
-        //printing pyramid
-        int space = height - 1;
-        for (int i = 0; i < height; i++)
+//printing pyramid
+      int space = height - 1;
+      for (int i = 0; i < height; i++)
 
-        {
-        for (int j = 0; j < (height + 1); j++)
+      {
+      for (int j = 0; j < (height + 1); j++)
 
-        {
-            //if row less space - print white space
-            if (j < space)
+      {
+//if row less space - print white space
+          if (j < space)
 
-            {
+          {
             printf (" ");
-            }
+          }
 
-            //if space less row  - print #
-            else
+          //if space less row  - print #
+          else
 
-            {
+          {
             printf ("#");
-            }
+          }
         }
 
         //decrement space
