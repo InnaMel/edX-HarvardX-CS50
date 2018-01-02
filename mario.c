@@ -44,8 +44,9 @@ int main (void)
 
         //if space less column  - print #
         else
+
         {
-          printf ("#");
+        printf ("#");
         }
       }
 
@@ -57,4 +58,5 @@ int main (void)
     }
     }
   }
+  return 0;
 }
