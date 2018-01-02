@@ -13,6 +13,7 @@ int main (void)
     //getting height for pyramid
     height = get_int ();
   }
+
   while ((height < 0) || (height > 23));
 
   //switching our actions depending on conditions
