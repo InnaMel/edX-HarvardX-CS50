@@ -31,7 +31,7 @@ int main (void)
       for (int i = 0; i < height; i++)
       {
         for (int j = 0; j < (height + 1); j++)
-          {
+        {
 
             //if row less space - print white space
             if (j < space)
