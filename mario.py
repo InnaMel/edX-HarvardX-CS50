@@ -25,11 +25,7 @@ elif not height == 0:
     # painting 0.5 of pyramid
     for i in range(height):
         if height == 1 or space == 0:
-            print('{0}'.format('#' * (i + 1)), end='')
-            print('{0}'.format(' ' * 2), end='')
-            print('{0}'.format('#' * (i + 1)))
+            print('{0}{1}{0}'.format('#' * (i + 1), ' ' * 2))
         else:
-            print('{0}{1}'.format(' ' * space, "#" * (i + 1)), end='')
-            print('{0}'.format(' ' * 2), end='')
-            print('{0}'.format("#" * (i + 1)))
+            print('{0}{1}{2}{1}'.format(' ' * space, "#" * (i + 1), ' ' * 2))
             space = space - 1
