@@ -1,12 +1,13 @@
 import cs50
 import sys
 # from cs50 import * or like this (just get_int)
+# mario more
 
 # for enter in cycle while
 height = -1
 
 while height < 0 or height > 23:
-    print("Height: ", end=' ')
+    print("Height: ", end='')
     height = cs50.get_int()
 
     # check entered - is the number positive?
@@ -23,10 +24,12 @@ elif not height == 0:
 
     # painting 0.5 of pyramid
     for i in range(height):
-        if height == 1:
-            print("#" * 2)
-        elif space == 0:
-            print("#" * (i + 2))
+        if height == 1 or space == 0:
+            print('{0}'.format('#' * (i + 1)), end='')
+            print('{0}'.format(' ' * 2), end='')
+            print('{0}'.format('#' * (i + 1)))
         else:
-            print('{0}{1}'.format(' ' * space, "#" * (i + 2)))
+            print('{0}{1}'.format(' ' * space, "#" * (i + 1)), end='')
+            print('{0}'.format(' ' * 2), end='')
+            print('{0}'.format("#" * (i + 1)))
             space = space - 1
