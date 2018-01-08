@@ -37,7 +37,7 @@ def checkNewHash(myKey):
     newCheck = True
     newHash = crypt.crypt(myKey, salt)
     if oldHash == newHash:
-        print('myKey', myKey)
+        print(myKey)
         newCheck = True
     else:
         newCheck = False
@@ -296,6 +296,33 @@ def checkKey3():
 
                     # cheking abCD
                     myKey[0] = chr(i)
+                    myKey[1] = chr(j)
+                    myKey[2] = chr(k).upper()
+                    myKey[3] = chr(t).upper()
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+#************
+                    # cheking ABCd
+                    myKey[0] = chr(i).upper()
+                    myKey[1] = chr(j).upper()
+                    myKey[2] = chr(k).upper()
+                    myKey[3] = chr(t)
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking aBCD
+                    myKey[0] = chr(i)
+                    myKey[1] = chr(j).upper()
+                    myKey[2] = chr(k).upper()
+                    myKey[3] = chr(t).upper()
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking AbCD
+                    myKey[0] = chr(i).upper()
                     myKey[1] = chr(j)
                     myKey[2] = chr(k).upper()
                     myKey[3] = chr(t).upper()
