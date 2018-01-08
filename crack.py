@@ -12,8 +12,6 @@ def main():
     elif len(sys.argv) == 2:
         oldHash = sys.argv[1]
 
-    print('you entered ', oldHash)
-
     # take salt from hash (first two characters)
     global salt
     salt = []
@@ -140,7 +138,7 @@ def checkKey2():
                 if check == True:
                     break
 
-                # cheking both in abC
+                # cheking in abC
                 myKey[0] = chr(i)
                 myKey[1] = chr(j)
                 myKey[2] = chr(k).upper()
@@ -155,6 +153,31 @@ def checkKey2():
                 check = checkNewHash(myKey)
                 if check == True:
                     break
+
+                # cheking ABc
+                myKey[0] = chr(i).upper()
+                myKey[1] = chr(j).upper()
+                myKey[2] = chr(k)
+                check = checkNewHash(myKey)
+                if check == True:
+                    break
+
+                # cheking AbC
+                myKey[0] = chr(i).upper()
+                myKey[1] = chr(j)
+                myKey[2] = chr(k).upper()
+                check = checkNewHash(myKey)
+                if check == True:
+                    break
+
+                # cheking aBC
+                myKey[0] = chr(i)
+                myKey[1] = chr(j).upper()
+                myKey[2] = chr(k).upper()
+                check = checkNewHash(myKey)
+                if check == True:
+                    break
+
             if check == True:
                 break
         if check == True:
@@ -220,6 +243,60 @@ def checkKey3():
                     # cheking ABCD
                     myKey[0] = chr(i).upper()
                     myKey[1] = chr(j).upper()
+                    myKey[2] = chr(k).upper()
+                    myKey[3] = chr(t).upper()
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+#**********************************************************
+                    # cheking ABcd
+                    myKey[0] = chr(i).upper()
+                    myKey[1] = chr(j).upper()
+                    myKey[2] = chr(k)
+                    myKey[3] = chr(t)
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking AbCd
+                    myKey[0] = chr(i).upper()
+                    myKey[1] = chr(j)
+                    myKey[2] = chr(k).upper()
+                    myKey[3] = chr(t)
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking AbcD
+                    myKey[0] = chr(i).upper()
+                    myKey[1] = chr(j)
+                    myKey[2] = chr(k)
+                    myKey[3] = chr(t).upper()
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking aBCd
+                    myKey[0] = chr(i)
+                    myKey[1] = chr(j).upper()
+                    myKey[2] = chr(k).upper()
+                    myKey[3] = chr(t)
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking aBcD
+                    myKey[0] = chr(i)
+                    myKey[1] = chr(j).upper()
+                    myKey[2] = chr(k)
+                    myKey[3] = chr(t).upper()
+                    check = checkNewHash(myKey)
+                    if check == True:
+                        break
+
+                    # cheking abCD
+                    myKey[0] = chr(i)
+                    myKey[1] = chr(j)
                     myKey[2] = chr(k).upper()
                     myKey[3] = chr(t).upper()
                     check = checkNewHash(myKey)
