@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<form action="/score" method="post">
+    <div style="width:100%">
+            <input name="string1" type="text" value="" autofocus/>
+    </div>
+
+    <div style="width:100%">
+            <input name="string2" type="text" value=""/>
+    </div>
+
+    <div>
+            <input name="buttonRes" type="submit" value="Score"/>
+    </div>
+</form>
+{% endblock %}
