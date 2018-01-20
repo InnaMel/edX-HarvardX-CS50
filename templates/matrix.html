@@ -1,0 +1,61 @@
+<!-- TODO -->
+
+<table>
+    <thead>
+        <tr>
+            <th>*</th>
+            <th>*</th>
+            <th>*</th>
+        {% for i in s2 %}
+            <th>
+                {{ i }}
+            </th>
+        {% endfor %}
+        </tr>
+        <tr>
+            <th>*</th>
+            <th>*</th>
+            <th>
+                0
+            </th>
+        {% for i in s2 %}
+            <th>
+                {{ loop.index }}
+            </th>
+        {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for elmt in matrix %}
+            <tr>
+                {% if loop.index == 1 %}
+                <th> * </th>
+                {% else %}
+                <th> {{ s1[loop.index -2] }} </th>
+                {% endif %}
+
+                <th>{{ loop.index - 1 }}</th>
+                {% for e in elmt %}
+                    <td> {{ e[0] }} </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+<!--<div>
+     <input name="buttonsss" type="submit" value="Score"/>
+</div>
+
+
+<table>
+{% for row in table %}
+  <tr>
+  {% set rowloop = loop %}
+  {% for cell in row %}
+    <td id="cell-{{ rowloop.index }}-{{ loop.index }}">{{ cell }}</td>
+  {% endfor %}
+  </tr>
+{% endfor %}
+</table>-->
