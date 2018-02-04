@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr align="left">
+            <th>Symbol</th>
+            <td></td>
+            <td></td>
+            <th>Shares</th>
+            <td></td>
+            <td></td>
+            <th>Price</th>
+            <td></td>
+            <td></td>
+            <th>Transacted</th>
+        </tr>
+    <tbody>
+        {% for elmt in row %}
+            <tr align="left">
+                {% for e in elmt %}
+                    <td>
+                        {{ e }}
+                    </td>
+                    <td></td>
+                    <td></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

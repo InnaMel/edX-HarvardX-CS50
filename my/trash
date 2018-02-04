@@ -1,0 +1,24 @@
+<!--{{ symbol }} ({{ name }}) costs ${{ price }}
+            A share of {{ quoteFromFu['symbol'] }} ({{ quoteFromFu['name'] }}) costs ${{ quoteFromFu['price'] }}-->
+
+           # return render_template("quoted.html", quoteFromFu)
+            #return render_template("quoted.html", symbol, name, price)
+
+
+            <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text"/>
+            allSymbols = db.execute("select stock_symbol, sum(quantity) as q from history where user_id = 6 group by stock_symbol;")
+
+
+                # get all data about Symbol from table history
+                #rowSymbol = db.execute("select quantity from history where stock_symbol = :getSymbol", getSymbol = getSymbol)
+
+                # look at quantity current info
+                #quantityShares = rowSymbol[0]['quantity']
+                #print('quantityShares in sell = ', quantityShares)
+
+                # calculate quantity remaining shares
+                #quantity = quantityShares - int(getQuantity)
+                #print('remaining quantity in sell = ',quantity)
+
+
+            <input class="form-control" name="password" placeholder="change password" type="password"/>
