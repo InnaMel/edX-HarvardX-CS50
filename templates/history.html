@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+<style type="text/css">
+
+</style>
+{% block main %}
+    <table width="50%">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for elmt in row %}
+            <tr style="border-top: 1px solid #CECECE; bgcolor: #e9ecef;">
+                {% for e in elmt %}
+                    <td>
+                        {{ e }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

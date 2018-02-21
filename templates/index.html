@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table width="50%">
+        <thead>
+            <tr align="left">
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr align="left">
+                <td colspan=4></td>
+                <th>{{ total }}</th
+                >
+            </tr>
+        </tfoot>
+    <tbody>
+        {% for elmt in symb %}
+            <tr style="border-top: 1px solid #CECECE;" bgcolor= "#e9ecef">
+                {% for e in elmt %}
+                    <td align="left">
+                        {{ e }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        <tr align="left">
+            <td  colspan=4>cash</td>
+            <td>{{ cash }}</td>
+        </tr>
+    </tbody>
+    </table>
+{% endblock %}
