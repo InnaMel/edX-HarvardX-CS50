@@ -17,12 +17,13 @@
 struct dictEntity
 {
     int hash;
-    char word[LENGTH+1];
+    char word[LENGTH + 1];
     struct dictEntity *next;
 };
 
 typedef struct dictEntity DICTENTITY;
-DICTENTITY* hashTableDict[ALPHABET]; // my hash table (array of link list) for hashing dictionary массив 26 элементов
+DICTENTITY
+*hashTableDict[ALPHABET];    // my hash table (array of link list) for hashing dictionary массив 26 элементов
 
 unsigned int sizeOfDictionary = 0;
 
@@ -36,17 +37,18 @@ int myHashFunction(const char *word, int *fullHash);
  */
 bool check(const char *word)
 {
-    if(sizeOfDictionary > 0)
+    if (sizeOfDictionary > 0)
     {
         int innerHash = 0;
         int checkHashWord = myHashFunction(word, &innerHash);
         // create copy of ptr needed index LL
-        DICTENTITY* copyhashTableDict = hashTableDict[checkHashWord];
-        if(copyhashTableDict != NULL)
+        DICTENTITY *copyhashTableDict = hashTableDict[checkHashWord];
+        if (copyhashTableDict != NULL)
         {
-            while(copyhashTableDict != NULL)
+            while (copyhashTableDict != NULL)
             {
-                if((copyhashTableDict->hash == innerHash) && (strcasecmp(copyhashTableDict->word, word) == 0))
+                if ((copyhashTableDict->hash == innerHash)
+                    && (strcasecmp(copyhashTableDict->word, word) == 0))
                 {
                     return true;
                 }
@@ -63,19 +65,19 @@ bool check(const char *word)
 bool load(const char *dictionary)
 {
     bool result = false;
-    FILE * dictFile = fopen(dictionary, "r");
-    if(dictFile)
+    FILE *dictFile = fopen(dictionary, "r");
+    if (dictFile)
     {
-        memset(hashTableDict, 0, ALPHABET * sizeof(DICTENTITY*));
+        memset(hashTableDict, 0, ALPHABET * sizeof(DICTENTITY *));
         char everyWord[45];
         result = true;
 
-        while(fscanf(dictFile, "%s", everyWord) != EOF)
+        while (fscanf(dictFile, "%s", everyWord) != EOF)
         {
             int hashStruct = 0;
             int currentHash = myHashFunction(everyWord, &hashStruct);
             DICTENTITY *newNextNode = createNewEntity();
-            if(newNextNode == NULL)
+            if (newNextNode == NULL)
             {
                 result = false;
                 unload();
@@ -93,7 +95,7 @@ bool load(const char *dictionary)
         }
         fclose(dictFile);
     }
-    if(!result)
+    if (!result)
     {
         unload();
     }
@@ -105,15 +107,15 @@ bool load(const char *dictionary)
 void printDictionary()
 {
     printf("enter in print*************** \n");
-    if(sizeOfDictionary > 0)
+    if (sizeOfDictionary > 0)
     {
         // create copy of ptr needed index LL
-        for(int i = 0; i < ALPHABET; i++)
+        for (int i = 0; i < ALPHABET; i++)
         {
-            if(hashTableDict[i] != NULL)
+            if (hashTableDict[i] != NULL)
             {
-                DICTENTITY* copyhashTableDict = hashTableDict[i];
-                while(copyhashTableDict != NULL)
+                DICTENTITY *copyhashTableDict = hashTableDict[i];
+                while (copyhashTableDict != NULL)
                 {
                     printf("Word is %s\n", copyhashTableDict->word);
                     copyhashTableDict = copyhashTableDict->next;
@@ -128,12 +130,12 @@ void printDictionary()
 DICTENTITY *createNewEntity()
 {
     DICTENTITY *result = malloc(sizeof(DICTENTITY));
-    if(result == NULL)
+    if (result == NULL)
     {
         return result;
     }
 
-    memset(result, 0, sizeof(DICTENTITY)); // zero pointers
+    memset(result, 0, sizeof(DICTENTITY));      // zero pointers
 
     return result;
 }
@@ -153,14 +155,14 @@ unsigned int size(void)
 // unload
 bool unload(void)
 {
-    if(sizeOfDictionary > 0)
+    if (sizeOfDictionary > 0)
     {
-        for(int i = 0; i < ALPHABET; i++)
+        for (int i = 0; i < ALPHABET; i++)
         {
-            DICTENTITY* copyhashTableDict = hashTableDict[i];
-            while(copyhashTableDict != NULL)
+            DICTENTITY *copyhashTableDict = hashTableDict[i];
+            while (copyhashTableDict != NULL)
             {
-                DICTENTITY* next = copyhashTableDict->next; // create new entity for deleting step by step
+                DICTENTITY *next = copyhashTableDict->next;     // create new entity for deleting step by step
                 free(copyhashTableDict);
                 copyhashTableDict = next;
             }
@@ -200,7 +202,7 @@ int myHashFunctionOLD(const char *word, int *fullHash)
         hashKey = hashKey + toupper(word[i]);
         koeff++;
     }
-    *fullHash = hashKey + (int)word[0] - koeff;
+    *fullHash = hashKey + (int) word[0] - koeff;
     hashKey = (hashKey + (word[0] - koeff)) % 26;
 
     return hashKey;
