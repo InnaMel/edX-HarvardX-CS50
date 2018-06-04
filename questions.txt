@@ -1,0 +1,12 @@
+1.  stdint.h - it is header, which one has itself declarate integer types and has macros for some width for them
+2.  uint8_t, uint32_t, int32_t, uint16_t They are allow use that memory as exactly need for each case. For instance for description of color in RGB enough of 255 values they are the same values of memory in uint8_t (that has 8 bit)
+3.  According to bmp.h: BYTE (uint8_t) - has 1 byte, DWORD (uint32_t) - has 4 byte, LONG (int32_t) - has 4 byte, WORD (uint16_t) - has 2 byte
+4.  First two bytes thats is signature of BMP (BM, 0x42 0x4D, "66 77" as ASCII)
+5.  biSize - size of BITMAPINFOHEADER, and the second one - bfSize - size of wholly size of file (size of pic plus size of metadata)
+6.  Negative biHeight - it is mean that describe correspond to RGB colors value table from top left corner
+7.  The fields of depth color is 28(biBitCount)
+8.  "fopen" may return NULL in that case if something goes wrong. For instance program do not have permission on the computer to create files or computer is out of space...
+9.  Number of third count is always 1 because BITMAPINFOHEADER and BITMAPFILEHEADER is struct like 1 piece, so struct is 1 elemet
+10. bi.biWidth = 3; sizeof(RGBTRIPLE) = 3 * 1byte = 3byte   So, padding = (4 - (bi.biWidth * sizeof(RGBTRIPLE)) % 4) % 4 = (4 - (3 * 3) % 4) % 4 = (4 - 1) % 4 = 3 % 4 = 3;
+11. The function fseek() - shifts the position from the desired location by the required number of bytes
+12. SEEK_CU - it is third argument of function fseek() - the shift is counted from the current position
