@@ -15,9 +15,10 @@ struct dictStruct
 };
 typedef struct dictStruct DICTENTITY;
 
-DICTENTITY* hashTableDict[ALPHABET]; // my hash table (array of link list) for hashing dictionary массив 26 элементов
+DICTENTITY
+*hashTableDict[ALPHABET];    // my hash table (array of link list) for hashing dictionary массив 26 элементов
 
-DICTENTITY* createNewEntity();
+DICTENTITY *createNewEntity();
 bool load(const char *dictionary);
 bool unload(void);
 int myHashFunction(char *word, int *fullHash);
@@ -36,30 +37,26 @@ int main(int argc, char *argv[])
     }
 
     // dictionary to use: dictionaries/small
-    char* dictionary = argv[1];
+    char *dictionary = argv[1];
 
     // word to check: any word
-    char* wordCheck = argv[2];
+    char *wordCheck = argv[2];
 
     load(dictionary);
     printDictionary();
 
-    if(check(wordCheck))
+    if (check(wordCheck))
     {
         printf("Word %s is present \n", wordCheck);
     }
     else
+    {
         printf("Word %s isn`t present \n", wordCheck);
+    }
 
     unload();
 
     return 0;
-
-/*printf("sizeof *hashTableDict[ALPHABET] %lu \n", sizeof(hashTableDict));
-printf("sizeof  DICTENTITY %lu \n", sizeof(DICTENTITY));
-printf("sizeof  DICTENTITY* %lu \n", sizeof(DICTENTITY*));
-printf("sizeof  void* %lu \n", sizeof(void*));
-printf("sizeof  int %lu \n", sizeof(int));*/
 
 }
 
@@ -67,25 +64,25 @@ printf("sizeof  int %lu \n", sizeof(int));*/
 bool load(const char *dictionary)
 {
     bool result = false;
-    FILE * dictFile = fopen(dictionary, "r");
-    if(dictFile)
+    FILE *dictFile = fopen(dictionary, "r");
+    if (dictFile)
     {
 //        printf("dictionary open successful \n");
-        memset(hashTableDict, 0, ALPHABET * sizeof(DICTENTITY*));
+        memset(hashTableDict, 0, ALPHABET * sizeof(DICTENTITY *));
         char everyWord[45];
         result = true;
 
-        while(fscanf(dictFile, "%s", everyWord) != EOF)
+        while (fscanf(dictFile, "%s", everyWord) != EOF)
         {
 //            printf("Loading word: %s \n", everyWord);
             int hashStruct = 0;
             int currentHash = myHashFunction(everyWord, &hashStruct);
 //            printf("Hash of %s: %d \n",everyWord, currentHash);
             DICTENTITY *newNextNode = createNewEntity();
-            if(newNextNode == NULL)
+            if (newNextNode == NULL)
             {
                 result = false;
-               // unload();
+                // unload();
                 break;
             }
 
@@ -100,7 +97,7 @@ bool load(const char *dictionary)
         }
         fclose(dictFile);
     }
-    if(!result)
+    if (!result)
     {
         unload();
     }
@@ -112,14 +109,14 @@ bool load(const char *dictionary)
 // unload
 bool unload(void)
 {
-    if(quantityWords > 0)
+    if (quantityWords > 0)
     {
-        for(int i = 0; i < ALPHABET; i++)
+        for (int i = 0; i < ALPHABET; i++)
         {
-            DICTENTITY* copyhashTableDict = hashTableDict[i];
-            while(copyhashTableDict != NULL)
+            DICTENTITY *copyhashTableDict = hashTableDict[i];
+            while (copyhashTableDict != NULL)
             {
-                DICTENTITY* next = copyhashTableDict->next; // create new entity for deleting step by step
+                DICTENTITY *next = copyhashTableDict->next;     // create new entity for deleting step by step
                 free(copyhashTableDict);
                 copyhashTableDict = next;
             }
@@ -137,12 +134,12 @@ bool unload(void)
 DICTENTITY *createNewEntity()
 {
     DICTENTITY *result = malloc(sizeof(DICTENTITY));
-    if(result == NULL)
+    if (result == NULL)
     {
         return result;
     }
 
-    memset(result, 0, sizeof(DICTENTITY)); // zero pointers
+    memset(result, 0, sizeof(DICTENTITY));      // zero pointers
 
     return result;
 }
@@ -151,15 +148,15 @@ DICTENTITY *createNewEntity()
 void printDictionary()
 {
     printf("enter in print*************** \n");
-    if(quantityWords > 0)
+    if (quantityWords > 0)
     {
         // create copy of ptr needed index LL
-        for(int i = 0; i < ALPHABET; i++)
+        for (int i = 0; i < ALPHABET; i++)
         {
-            if(hashTableDict[i] != NULL)
+            if (hashTableDict[i] != NULL)
             {
-                DICTENTITY* copyhashTableDict = hashTableDict[i];
-                while(copyhashTableDict != NULL)
+                DICTENTITY *copyhashTableDict = hashTableDict[i];
+                while (copyhashTableDict != NULL)
                 {
                     printf("Word is %s\n", copyhashTableDict->word);
                     copyhashTableDict = copyhashTableDict->next;
@@ -172,7 +169,7 @@ void printDictionary()
 // checking that word in dictionary for availability
 bool check(char *word)
 {
-    if(quantityWords > 0)
+    if (quantityWords > 0)
     {
         int innerHash = 0;
         int checkHashWord = myHashFunction(word, &innerHash);
@@ -180,13 +177,14 @@ bool check(char *word)
         printf("*%s* for check, hash is %i\n", word, checkHashWord);
         printf("quantityWords %i\n", quantityWords);
         // create copy of ptr needed index LL
-        DICTENTITY* copyhashTableDict = hashTableDict[checkHashWord];
-        if(copyhashTableDict != NULL)
+        DICTENTITY *copyhashTableDict = hashTableDict[checkHashWord];
+        if (copyhashTableDict != NULL)
         {
             printf("not null \n");
-            while(copyhashTableDict != NULL)
+            while (copyhashTableDict != NULL)
             {
-                if((copyhashTableDict->hash == innerHash) && (strcasecmp(copyhashTableDict->word, word) == 0))
+                if ((copyhashTableDict->hash == innerHash)
+                    && (strcasecmp(copyhashTableDict->word, word) == 0))
                 {
                     return true;
                 }
@@ -210,12 +208,10 @@ int myHashFunction(char *word, int *fullHash)
         koeff++;
 //        printf("hashKey: %i, ASCII: %i \n", hashKey, toupper(word[i]));
     }
-    *fullHash = hashKey + (int)word[0] - koeff;
+    *fullHash = hashKey + (int) word[0] - koeff;
     hashKey = (hashKey + (word[0] - koeff)) % 26;
 //    printf("hashKey: %i\n", hashKey);
 //    printf("END HESHING ************* \n");
 
     return hashKey;
 }
-
-
