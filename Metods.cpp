@@ -27,15 +27,15 @@ bool dirExists(const wstring &userPath)
     DWORD ftyp = GetFileAttributes(userPath.c_str());
     if (ftyp == INVALID_FILE_ATTRIBUTES)
     {
-        return false;  //something is wrong with your path!
+        return false;  //something is wrong with path!
     }
 
     if (ftyp & FILE_ATTRIBUTE_DIRECTORY)
     {
-        return true;   // this is a directory!
+        return true;   // this is a directory
     }
 
-    return false;    // this is not a directory!
+    return false;    // this is not a directory
 }
 
 // creating list, searching all files from users directory
